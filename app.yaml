@@ -1,5 +1,4 @@
 # [START runtime]
-application: screwtopmedia-dashboard
 version: 1
 runtime: python27
 threadsafe: yes
