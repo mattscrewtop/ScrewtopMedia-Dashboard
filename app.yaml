@@ -7,12 +7,6 @@ api_version: 1
 default_expiration: "30d"
 
 handlers:
-- url: /email
-  static_dir: email
-  application_readable: true
-  secure: always
-  redirect_http_response_code: 301
-
 # Routing for typedoc, assets and favicon.ico to serve directly
 - url: /((?:assets|docs)/.*|favicon\.ico)
   secure: always
@@ -264,5 +258,11 @@ handlers:
   static_files: static/index.html
   upload: static/index.html
   expiration: "15m"
+  secure: always
+  redirect_http_response_code: 301
+
+- url: /email
+  static_dir: static/email
+  application_readable: true
   secure: always
   redirect_http_response_code: 301
