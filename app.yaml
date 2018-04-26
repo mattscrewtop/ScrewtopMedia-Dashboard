@@ -24,7 +24,7 @@ handlers:
   redirect_http_response_code: 301
 
 # Handle folder urls by serving the index.html page inside.
-- url: /email
+- url: /email$
   static_files: static/email/index.html
   upload: static/email/index.html
   expiration: "0m"
