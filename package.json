@@ -1,0 +1,14 @@
+{
+  "name": "screwtopmedia-dashboard",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattscrewtop/ScrewtopMedia-Dashboard.git"
+  },
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}

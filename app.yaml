@@ -6,19 +6,60 @@ threadsafe: yes
 default_expiration: "7d"
 
 handlers:
-- url: /email
-  static_dir: email
-  application_readable: true
+- url: /(.*\.json)
+  mime_type: application/json
+  static_files: dist/\1
+  upload: dist/(.*\.json)
+  secure: always
+
+- url: /(.*\.mp4)
+  mime_type: video/mp4
+  static_files: dist/\1
+  upload: dist/(.*\.mp4)
+  secure: always
+
+- url: /(.*\.(gif|png|jpg|css|js|otf|eot|svg|ttf|woff|woff2)(|\.map))$
+  static_files: dist/\1
+  upload: dist/(.*)(|\.map)
+  secure: always
+
+# Routing for typedoc, assets and favicon.ico to serve directly
+- url: /((?:assets|docs)/.*|favicon\.ico)
+  secure: always
+  redirect_http_response_code: 301
+  static_files: dist/\1
+  upload: dist/.*
 
 # Any other requests are routed to index.html for angular to handle so we don't need hash URLs
 - url: /.*
   secure: always
   redirect_http_response_code: 301
-  static_files: index.html
-  upload: index\.html
+  static_files: dist/index.html
+  upload: dist/index\.html
   http_headers:
     Strict-Transport-Security: max-age=31536000; includeSubDomains
     X-Frame-Options: DENY
+
+# index files
+#- url: (.*)/
+#  static_files: dist\1/index.html
+#  upload: dist
+#  expiration: "5m"
+#  secure: always
+
+#- url: (.*)
+#  static_files: dist\1
+#  upload: dist
+
+  #redirect_http_response_code: 301
+
+#- url: /(.*\.(gif|png|jpg|css|js|otf|eot|svg|ttf|woff|woff2)(|\.map))$
+#  static_files: dist/\1
+#  upload: dist/(.*)(|\.map)
+
+#- url: /(.*)
+#  static_files: dist/index.html
+#  upload: dist/index.html
 
 # Temporary setting to keep gcloud from uploading not required files for deployment
 skip_files:
