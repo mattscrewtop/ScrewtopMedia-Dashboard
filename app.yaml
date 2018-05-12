@@ -4,7 +4,7 @@ threadsafe: yes
 api_version: 1
 # [END runtime]
 
-default_expiration: "30d"
+default_expiration: "0d 0h 0m"
 
 handlers:
 # Routing for typedoc, assets and favicon.ico to serve directly
