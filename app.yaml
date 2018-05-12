@@ -4,43 +4,54 @@ threadsafe: yes
 api_version: 1
 # [END runtime]
 
-default_expiration: "0m"
+default_expiration: "30d"
 
 handlers:
 # Routing for typedoc, assets and favicon.ico to serve directly
-#  expiration: "0m"
 - url: /$
   static_files: static/index.html
   upload: static/index.html
+  expiration: "0d 0h 0m"
   secure: always
+  redirect_http_response_code: 301
 
 # Handle folder urls by serving the index.html page inside.
 - url: /email
   static_files: static/email/index.html
   upload: static/email/index.html
+  expiration: "0d 0h 0m"
   secure: always
+  redirect_http_response_code: 301
 
 # Handle folder urls by serving the index.html page inside.
 - url: /(.*)/$
   static_files: static/\1/index.html
   upload: static/.*/index.html
+  expiration: "0d 0h 0m"
   secure: always
+  redirect_http_response_code: 301
 
 # Handle nearly every other file by just serving it.
 - url: /email/(.+)
   static_files: static/email/\1
   upload: static/email/(.*)
+  expiration: "0d 0h 0m"
   secure: always
+  redirect_http_response_code: 301
 
 # Handle nearly every other file by just serving it.
 - url: /email(.+)
   static_files: static/email/\1
   upload: static/email/(.*)
+  expiration: "0d 0h 0m"
   secure: always
+  redirect_http_response_code: 301
 
 # Handle nearly every other file by just serving it.
 - url: /(.+)
   static_files: static/\1
   upload: static/(.*)
+  expiration: "0d 0h 0m"
   secure: always
+  redirect_http_response_code: 301
 
